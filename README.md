@@ -111,14 +111,14 @@ The dataset was checked for:
 There were 11 blank `TotalCharges` values. All 11 belonged to customers with `tenure = 0`, so they were treated as zero accumulated charges.
 
 ```python
-df_clean[TotalCharges] = pd.to_numeric(
-    df_clean[TotalCharges],
+df_clean["TotalCharges"] = pd.to_numeric(
+    df_clean["TotalCharges"],
     errors=coerce
 )
 ```
 
-```
-df_clean[TotalCharges] = df_clean[TotalCharges].fillna(0) 
+```python
+df_clean["TotalCharges"] = df_clean["TotalCharges"].fillna(0) 
 ```
 
 No duplicate rows or duplicate customer IDs were found.
@@ -178,7 +178,7 @@ These were standardized using `StandardScaler`.
 
 Categorical variables were encoded using:
 
-```python OneHotEncoder(handle_unknown=ignore) ```
+```python OneHotEncoder(handle_unknown="ignore") ```
 
 The preprocessing steps were included inside the Scikit-learn model pipeline to ensure that transformations were learned from the appropriate training data.
 
